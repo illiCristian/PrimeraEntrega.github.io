@@ -42,7 +42,8 @@ const fBorrarCompra = (arrayCompras) => {
   return nuevoArr;
 }
 
-const fFiltrarNombre = (arrayCompras) => {
+
+const fBuscarPorNombre = (arrayCompras) => {
   let nombre = pedirString("Ingrese el nombre del producto").toLowerCase();
   let encontrado = arrayCompras.find((el) => el.nombre === nombre);
   let mensaje;
@@ -59,12 +60,14 @@ const calcularPromedios = (arrayCompras) => {
   let acum = 0;
   for (let i = 0; i < arrayCompras.length; i++) {
      acum += arrayCompras[i].monto;
-     console.log(arrayCompras[i].monto);
+    //  console.log(arrayCompras[i].monto);
     }
   let promedio = acum / arrayCompras.length;
+  let mensaje = `El promedio total de las compras realizadas es = $ "${promedio}"`;
     console.log(promedio);
+    alert(mensaje);
   };
-    
+  
   
 
 let $compra = document.getElementById("crear-compra");
@@ -73,8 +76,8 @@ $compra.addEventListener("click", () => crearCompra(arrayCompras));
 let $imprimir = document.getElementById("mostrar-compras");
 $imprimir.onclick = fImprimirCompras;
 
-let $filtrarNombre = document.getElementById("filtrar-nombre");
-$filtrarNombre.addEventListener("click", () => fFiltrarNombre(arrayCompras));
+let $buscarNombre = document.getElementById("buscar-nombre");
+$buscarNombre.addEventListener("click", () => fBuscarPorNombre(arrayCompras));
 
 let $promedio = document.getElementById("mostrar-promedios");
 $promedio.addEventListener("click", () => calcularPromedios(arrayCompras));
